@@ -16,7 +16,7 @@ class epreuve (models.Model):
     
 class citations (models.Model):
     contenue = models.CharField(max_length=128)
-    auteur = models.CharField(max_length=128, blank= True, default='bon à savoir')
+    auteur = models.CharField(max_length=128, blank= True, default='anonyme')
     
 
 class citations (models.Model):
@@ -34,9 +34,16 @@ class eleve (models.Model):
     nom = models.CharField(max_length=128)
     telephone = models.IntegerField(max_length=15)
     classe = models.CharField(max_length=128)
+    password = models.CharField(max_length=128)
     filiere = models.CharField(max_length=128)
     pays = models.CharField(max_length=128)
     ville = models.CharField(max_length=128)
     quatier = models.CharField(max_length=128)
+    
+class preoccupation (models.Model):
+    auteur = models.CharField(max_length=128, blank= True, default='anonyme')
+    contenue = models.CharField(max_length=128)
+    fichier = models.FileField(upload_to='document/', blank=True,)
+    
     
   
