@@ -20,7 +20,11 @@ class Cours_api(viewsets.ViewSet):
         return Response(serialiazer.errors, status = status.HTTP_400_BAD_REQUEST)
 
     def retrieve(self, request, pk=None):
-        pass
+        id=pk
+        if id is not None:
+            cours_particulier = Cours.objects.get(id=id)
+            serializer = CoursSerializer(cours_particulier).data
+            return Response(serializer)
 
     def update(self, request, pk=None):
         pass
@@ -29,4 +33,8 @@ class Cours_api(viewsets.ViewSet):
         pass
 
     def destroy(self, request, pk=None):
-        pass
+        id = pk
+        if id is not None:
+            cours_particulier = Cours.objects.get(id)
+            cours_particulier.delete()
+            return Response({'msg':'cours bien suprimé'}, status= status.HTTP_202_ACCEPTED)
