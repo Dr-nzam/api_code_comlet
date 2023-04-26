@@ -47,10 +47,10 @@ class Preoccupation (models.Model):
     
 
 class Reponse (models.Model):
-    auteur = models.ForeignKey(Utilisateur, on_delete=models.CASCADE)
+    auteur = models.ForeignKey(Utilisateurs, on_delete=models.CASCADE)
     contenue = models.CharField(max_length=128)
     fichier = models.FileField(upload_to='document/', blank=True,)
-    classe = models.ForeignKey(Utilisateur, on_delete=models.CASCADE)
-    poste = models.ForeignKey(Utilisateur, on_delete=models.CASCADE)
+    classe = models.ForeignKey(Utilisateurs, on_delete=models.CASCADE)
+    poste = models.ForeignKey(Utilisateurs, on_delete=models.CASCADE)
     
   
