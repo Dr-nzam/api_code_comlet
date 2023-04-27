@@ -33,8 +33,6 @@ class Cours_api(viewsets.ViewSet):
         pass
 
     def destroy(self, request, pk=None):
-        id = pk
-        if id is not None:
-            cours_particulier = Cours.objects.get(id)
-            cours_particulier.delete()
-            return Response({'msg':'cours bien suprimé'}, status= status.HTTP_202_ACCEPTED)
+        cours_particulier = Cours.objects.filter(pk=pk)
+        cours_particulier.delete()
+        return Response({'msg':'cours bien suprimé'}, status= status.HTTP_202_ACCEPTED)
